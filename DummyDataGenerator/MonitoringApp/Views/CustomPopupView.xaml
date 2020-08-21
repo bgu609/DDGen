@@ -1,0 +1,29 @@
+﻿<mah:MetroWindow
+    x:Class="MonitoringApp.Views.CustomPopupView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:MonitoringApp.Views"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    mc:Ignorable="d"
+    Height="300" Width="300"
+    WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner"
+    Background="WhiteSmoke" BorderBrush="Black">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" x:Name="GridName"/>
+        <TextBox Grid.Row="1" x:Name="borkerip" mah:TextBoxHelper.Watermark="Broker url" FontSize="10"/>
+        <TextBox Grid.Row="2" x:Name="topic" mah:TextBoxHelper.Watermark="Topic" FontSize="10"/>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="accept" Content="Accept"/>
+            <Button x:Name="iscancel" Content="Cancel"/>
+        </StackPanel>
+    </Grid>
+</mah:MetroWindow>
