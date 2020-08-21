@@ -4,9 +4,48 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MonitoringApp.Views"
+             xmlns:livechart="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="690" d:DesignWidth="1280">
     <Grid>
-        <Label Content="Real-Time View" FontSize="20"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Real-Time View" FontSize="7"/>
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="1" Content="Temperature" VerticalAlignment="Center" FontSize="20"/>
+            <Label Grid.Row="0" Grid.Column="2" Content="Humid" VerticalAlignment="Center" FontSize="20"/>
+            <Label Grid.Row="0" Grid.Column="3" Content="Pressure" VerticalAlignment="Center" FontSize="20"/>
+
+            <Label Grid.Row="1" Grid.Column="0" Content="Living Room" VerticalAlignment="Center" FontSize="20"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Dining Room" VerticalAlignment="Center" FontSize="20"/>
+            <Label Grid.Row="3" Grid.Column="0" Content="Bath Room" VerticalAlignment="Center" FontSize="20"/>
+
+            <livechart:Gauge Grid.Row="1" Grid.Column="1" Value="{Binding Living_Temp}" From="-50" To="100" Margin="5" FromColor="Blue" ToColor="Red"/>
+            <livechart:Gauge Grid.Row="2" Grid.Column="1" Value="24" From="-50" To="100" Margin="5" FromColor="Blue" ToColor="Red"/>
+            <livechart:Gauge Grid.Row="3" Grid.Column="1" Value="24" From="-50" To="100" Margin="5" FromColor="Blue" ToColor="Red"/>
+
+            <livechart:Gauge Grid.Row="1" Grid.Column="2" Value="50" To="100" Margin="5"/>
+            <livechart:Gauge Grid.Row="2" Grid.Column="2" Value="50" To="100" Margin="5"/>
+            <livechart:Gauge Grid.Row="3" Grid.Column="2" Value="50" To="100" Margin="5"/>
+
+            <livechart:Gauge Grid.Row="1" Grid.Column="3" Value="900" From="750" To="1100" Margin="5"/>
+            <livechart:Gauge Grid.Row="2" Grid.Column="3" Value="900" From="750" To="1100" Margin="5"/>
+            <livechart:Gauge Grid.Row="3" Grid.Column="3" Value="900" From="750" To="1100" Margin="5"/>
+        </Grid>
     </Grid>
 </UserControl>

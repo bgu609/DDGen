@@ -5,8 +5,57 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MonitoringApp.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="690" d:DesignWidth="1280">
+    <UserControl.Resources>
+        <Style x:Key="ConsoleTextBox" TargetType="{x:Type TextBox}">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <ScrollViewer RenderTransformOrigin="0.5,0.5" VerticalScrollBarVisibility="Auto">
+                            <ScrollViewer.RenderTransform>
+                                <ScaleTransform ScaleY="-1"/>
+                            </ScrollViewer.RenderTransform>
+                            <TextBox Text="{TemplateBinding Text}" RenderTransformOrigin="0.5,0.5">
+                                <TextBox.RenderTransform>
+                                    <ScaleTransform ScaleY="-1"/>
+                                </TextBox.RenderTransform>
+                            </TextBox>
+                        </ScrollViewer>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
     <Grid>
-        <Label Content="Database View" FontSize="20"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Data Monitoring" FontSize="7"/>
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="{Binding Brokerurl}" VerticalAlignment="Center" FontSize="15"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="Broker URL" VerticalAlignment="Center" FontSize="15"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="Topic" VerticalAlignment="Center" FontSize="15"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="Topic" VerticalAlignment="Center" FontSize="15"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Database Info" VerticalAlignment="Center" FontSize="15"/>
+            <TextBox Text="{Binding Constring}" Grid.Row="2" Grid.Column="1" FontSize="14" VerticalAlignment="Center"/>
+            <Label Grid.Row="3" Grid.Column="0" Content="Connection" VerticalAlignment="Center" FontSize="15"/>
+            <ToggleButton x:Name="Connect" IsChecked="{Binding IsConnected}" Content="{Binding Togglecontent}" Grid.Row="3" Grid.Column="1" Margin="10, 10, 1000, 10"/>
+
+            <TextBox Text="{Binding DBlog}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Background="AntiqueWhite" VerticalScrollBarVisibility="Visible" Style="{StaticResource ConsoleTextBox}"/>
+        </Grid>
     </Grid>
 </UserControl>
