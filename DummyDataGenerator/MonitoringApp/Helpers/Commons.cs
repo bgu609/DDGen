@@ -10,6 +10,8 @@ namespace MonitoringApp.Helpers
         public static string BROKER_CLIENT { get; set; }
         public static string CONNECT_STRING { get; set; }
         public static bool IS_CONNECTED { get; set; }
+
+        public static readonly string CONSTR = "Data Source=localhost; Port=3306; database=bookrentalshop; Uid=root; Password=epfls+358471;";
     }
 
     public class NOT_Empty_Validation : ValidationRule

@@ -5,8 +5,47 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MonitoringApp.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="800" d:DesignWidth="1280"
+             xmlns:oxy="http://oxyplot.org/wpf">
     <Grid>
-        <Label Content="History View" FontSize="20"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="History Data" />
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="division"/>
+                <ComboBox x:Name="divisons" Width="150" DisplayMemberPath="DivisionVal" ItemsSource="{Binding Divisions}" SelectedIndex="0"/>
+                <Label x:Name="startdate"/>
+                <DatePicker x:Name="startpicker"/>
+                <DatePicker x:Name="endpicker"/>
+                
+            </StackPanel>
+            <Button x:Name="Search" Grid.Column="1" Content="Search" Margin="5"/>
+
+            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10">
+                <oxy:Plot Background="WhiteSmoke">
+                    <oxy:Plot.Series>
+                        <oxy:LineSeries Color="DarkRed" MarkerType="None" Title="Temperature" ItemsSource="{Binding TempValues}"/>
+                        <oxy:LineSeries Color="Aquamarine" MarkerType="None" Title="Humid" ItemsSource="{Binding HumidValues}"/>
+                        <oxy:LineSeries Color="BlueViolet" MarkerType="None" Title="Pressure" ItemsSource="{Binding PressValues}"/>
+                    </oxy:Plot.Series>
+                </oxy:Plot>
+            </Grid>
+            
+            
+        </Grid>
     </Grid>
 </UserControl>

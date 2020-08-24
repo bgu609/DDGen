@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using MonitoringApp.Helpers;
 using System;
 using System.Windows;
 
@@ -9,6 +10,7 @@ namespace MonitoringApp.ViewModels
         public MainViewModel()
         {
             DisplayName = "MQTT Monitoring App";
+            Commons.BROKER_CLIENT = "????";
         }
 
         public void exitprogram()
@@ -23,7 +25,15 @@ namespace MonitoringApp.ViewModels
 
         public void LoadDatabaseView()
         {
-            ActivateItem(new DatabaseViewModel());
+            if(Commons.BROKER_CLIENT != null)
+            {
+                ActivateItem(new DatabaseViewModel());
+            }
+            else
+            {
+                var wManager = new WindowManager();
+                wManager.ShowDialog(new ErrorPopupViewModel("Error"));
+            }
         }
 
         public void LoadRealtimeView()

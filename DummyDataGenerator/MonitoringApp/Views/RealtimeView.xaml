@@ -36,16 +36,16 @@
             <Label Grid.Row="3" Grid.Column="0" Content="Bath Room" VerticalAlignment="Center" FontSize="20"/>
 
             <livechart:Gauge Grid.Row="1" Grid.Column="1" Value="{Binding Living_Temp}" From="-50" To="100" Margin="5" FromColor="Blue" ToColor="Red"/>
-            <livechart:Gauge Grid.Row="2" Grid.Column="1" Value="24" From="-50" To="100" Margin="5" FromColor="Blue" ToColor="Red"/>
-            <livechart:Gauge Grid.Row="3" Grid.Column="1" Value="24" From="-50" To="100" Margin="5" FromColor="Blue" ToColor="Red"/>
+            <livechart:Gauge Grid.Row="2" Grid.Column="1" Value="{Binding Living_Temp}" From="-50" To="100" Margin="5" FromColor="Blue" ToColor="Red"/>
+            <livechart:Gauge Grid.Row="3" Grid.Column="1" Value="{Binding Living_Temp}" From="-50" To="100" Margin="5" FromColor="Blue" ToColor="Red"/>
 
-            <livechart:Gauge Grid.Row="1" Grid.Column="2" Value="50" To="100" Margin="5"/>
-            <livechart:Gauge Grid.Row="2" Grid.Column="2" Value="50" To="100" Margin="5"/>
-            <livechart:Gauge Grid.Row="3" Grid.Column="2" Value="50" To="100" Margin="5"/>
+            <livechart:Gauge Grid.Row="1" Grid.Column="2" Value="{Binding Living_Temp}" To="100" Margin="5"/>
+            <livechart:Gauge Grid.Row="2" Grid.Column="2" Value="{Binding Living_Temp}" To="100" Margin="5"/>
+            <livechart:Gauge Grid.Row="3" Grid.Column="2" Value="{Binding Living_Temp}" To="100" Margin="5"/>
 
-            <livechart:Gauge Grid.Row="1" Grid.Column="3" Value="900" From="750" To="1100" Margin="5"/>
-            <livechart:Gauge Grid.Row="2" Grid.Column="3" Value="900" From="750" To="1100" Margin="5"/>
-            <livechart:Gauge Grid.Row="3" Grid.Column="3" Value="900" From="750" To="1100" Margin="5"/>
+            <livechart:Gauge Grid.Row="1" Grid.Column="3" Value="{Binding Living_Temp}" From="750" To="1100" Margin="5"/>
+            <livechart:Gauge Grid.Row="2" Grid.Column="3" Value="{Binding Living_Temp}" From="750" To="1100" Margin="5"/>
+            <livechart:Gauge Grid.Row="3" Grid.Column="3" Value="{Binding Living_Temp}" From="750" To="1100" Margin="5"/>
         </Grid>
     </Grid>
 </UserControl>

@@ -1,6 +1,5 @@
 ﻿using Bogus;
 using Newtonsoft.Json;
-using System;
 using System.Text;
 using System.Threading;
 using uPLibrary.Networking.M2Mqtt;
@@ -13,10 +12,10 @@ namespace MonitoringApp.ViewModels
     {
         public static string MqttBrokerUrl { get; set; }
         public static MqttClient BrokerClient { get; set; }
-        private static Thread MqttThread { get; set; }
-        private static Faker<SensorInfo> SensorFaker { get; set; }
+        public static Thread MqttThread { get; set; }
+        public static Faker<SensorInfo> SensorFaker { get; set; }
 
-        private static string CurrValue { get; set; }
+        public static string CurrValue { get; set; }
 
         private double living_temp;
         public double Living_Temp
@@ -39,7 +38,7 @@ namespace MonitoringApp.ViewModels
 
 
 
-        private void InitializeAll()
+        public void InitializeAll()
         {
             MqttBrokerUrl = "localhost"; // or 127.0.0.1
 
@@ -53,20 +52,20 @@ namespace MonitoringApp.ViewModels
                 .RuleFor(o => o.Press, f => float.Parse(f.Random.Float(899.0f, 1005.9f).ToString("0.0")));
         }
 
-        private void ConnectMqttBroker()
+        public void ConnectMqttBroker()
         {
             BrokerClient = new MqttClient(MqttBrokerUrl);
             BrokerClient.Connect("FakerDaemon");
         }
 
-        private void StartPublish()
+        public void StartPublish()
         {
             MqttThread = new Thread(new ThreadStart(LoopPublish));
             //MqttThread = new Thread(() => LoopPublish());
             MqttThread.Start();
         }
 
-        private void LoopPublish()
+        public void LoopPublish()
         {
             RealtimeViewModel realtimeViewModel = new RealtimeViewModel();
             while (true)
@@ -88,5 +87,6 @@ namespace MonitoringApp.ViewModels
                 Thread.Sleep(1000);
             }
         }
+
     }
 }
