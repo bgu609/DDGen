@@ -39,8 +39,10 @@ namespace MonitoringApp.ViewModels
             get => startpicker;
             set
             {
-                startpicker = value;
+                startpicker = DateTime.Parse(value).ToString("yyyy-MM-dd");
+                endpicker = DateTime.Parse(value).ToString("yyyy-MM-dd");
                 NotifyOfPropertyChange(() => Startpicker);
+                NotifyOfPropertyChange(() => Endpicker);
             }
         }
 
@@ -50,7 +52,7 @@ namespace MonitoringApp.ViewModels
             get => endpicker;
             set
             {
-                startpicker = value;
+                endpicker = DateTime.Parse(value).ToString("yyyy-MM-dd");
                 NotifyOfPropertyChange(() => Endpicker);
             }
         }
@@ -112,9 +114,15 @@ namespace MonitoringApp.ViewModels
 
         public void Search()
         {
+            if(SelectedDiv.KeyVal==0)
+            {
+                return;
+            }
+
             DataSet dataSet = new DataSet();
             System.Collections.Generic.List<DataPoint> TempValues = new System.Collections.Generic.List<DataPoint>();
 
+            
         }
 
         public void mySql()

@@ -11,5 +11,10 @@ namespace MonitoringApp.Views
         {
             InitializeComponent();
         }
+
+        private void UserControl_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
     }
 }
